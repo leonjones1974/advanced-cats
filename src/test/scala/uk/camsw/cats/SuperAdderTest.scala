@@ -1,9 +1,9 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import cats.Monoid
-import org.scalatest.{FunSpec, FunSuite, Matchers}
 import cats.instances.int._
 import cats.instances.option._
+import org.scalatest.{FunSpec, Matchers}
 /**
   * Created by leonjones on 12/09/17.
   */

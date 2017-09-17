@@ -1,4 +1,4 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import cats.{Functor, Show}
 

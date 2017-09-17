@@ -1,10 +1,10 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import org.scalatest.{FunSpec, Matchers}
-import PrintableSyntax._
-import PrintableInstances._
-import uk.camsw.bloom.temp.Printable.{format, print}
+import uk.camsw.cats.Printable.{format, print}
 
+import PrintableInstances._
+import PrintableSyntax._
 class PrintableTest extends FunSpec with Matchers {
 
   describe("Printable") {

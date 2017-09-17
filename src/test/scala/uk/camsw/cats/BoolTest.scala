@@ -1,8 +1,8 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import cats.Monoid
-import org.scalatest.{FunSpec, Matchers}
 import cats.syntax.monoid._
+import org.scalatest.{FunSpec, Matchers}
 class BoolTest extends FunSpec with Matchers {
 
   describe("boolean monoids") {

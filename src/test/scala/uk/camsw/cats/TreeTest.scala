@@ -1,11 +1,11 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import cats.instances.int._
 import cats.instances.string._
 import cats.syntax.functor._
 import cats.syntax.show._
 import org.scalatest.{FunSpec, Matchers}
-import uk.camsw.bloom.temp.TreeInstances._
+import uk.camsw.cats.TreeInstances._
 
 class TreeTest extends FunSpec with Matchers {
 

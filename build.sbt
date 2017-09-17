@@ -1,4 +1,4 @@
-name := "bloom"
+name := "advanced-cats"
 organization := "uk.camsw"
 scalaVersion := "2.11.8"
 version := "1.0.0-SNAPSHOT"

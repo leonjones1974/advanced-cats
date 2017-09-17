@@ -1,10 +1,10 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
-import org.scalatest.{FunSpec, Matchers}
-import uk.camsw.bloom.temp.PrintableSyntax._
-import cats.syntax.show._
-import cats.syntax.eq._
 import cats.instances.option._
+import cats.syntax.eq._
+import cats.syntax.show._
+import org.scalatest.{FunSpec, Matchers}
+import uk.camsw.cats.PrintableSyntax._
 class CatTest extends FunSpec with Matchers {
 
   describe("A cat") {

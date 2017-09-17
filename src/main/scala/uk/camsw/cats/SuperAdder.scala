@@ -1,7 +1,6 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
 import cats.kernel.Monoid
-import cats.syntax.semigroup._
 /**
   * Created by leonjones on 12/09/17.
   */

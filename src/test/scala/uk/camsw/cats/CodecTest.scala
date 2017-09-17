@@ -1,17 +1,17 @@
-package uk.camsw.bloom.temp
+package uk.camsw.cats
 
-import org.scalatest.{FunSpec, FunSuite, Matchers}
+import org.scalatest.{FunSpec, Matchers}
+import uk.camsw.cats.Codec._
 import CodecInstances._
-import Codec._
 
 class CodecTest extends FunSpec with Matchers {
 
   describe("code") {
-    it("should encode"){
+    it("should encode") {
       encode(123) shouldBe "123"
     }
 
-    it("should decode"){
+    it("should decode") {
       decode[Int]("123") shouldBe Some(123)
     }
 
