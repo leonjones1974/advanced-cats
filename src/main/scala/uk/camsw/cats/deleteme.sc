@@ -22,6 +22,7 @@
 //Writer.factorial(10)
 
 type Logged[A] = cats.data.Writer[Vector[String], A]
+
 import cats.syntax.applicative._
 import cats.instances.vector._
 import cats.syntax.writer._
@@ -30,4 +31,6 @@ import cats.syntax.writer._
 //val ans:Logged[Int] = 1.writer(Vector.empty[String])
 //ans.flatMap(x => x.map(_ => Vector("and a message").tell)).run
 1.pure[Logged].flatMap(ans => Vector("and a message").tell)
+
+List("ana", "aan", "naa", "abc", "cab", "fish").groupBy(_.sortBy(_.toInt))
 
