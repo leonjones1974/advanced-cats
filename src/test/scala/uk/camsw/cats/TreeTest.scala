@@ -38,8 +38,33 @@ class TreeTest extends FunSpec with Matchers {
       //     *
       //   *   *
       //  1 2 3 4
-      val tree = Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(3), Leaf(4))) : Tree[Int]
+      val tree = Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(3), Leaf(4))): Tree[Int]
       tree.map(_ * 2).show shouldBe "((2,4),(6,8))"
     }
+
+    it("has a monad instance - pure") {
+      import cats.syntax.applicative._
+      1.pure[Tree] shouldBe leaf(1)
+    }
+
+    it("has a monad instance - flatmap") {
+      import TreeInstances.treeMonad
+      import cats.syntax.flatMap._
+
+      val r = branch(leaf(100), leaf(200)).flatMap(x => branch(leaf(x - 1), leaf(x + 1)))
+
+      r shouldBe branch(branch(leaf(99), leaf(101)), branch(leaf(199), leaf(201)))
+
+    }
   }
+
+  //    it("has a monad instance - for comprehension") {
+  //      for {
+  //        a <- branch(leaf(100), leaf(200))
+  //        b <- branch(leaf(a - 10), leaf(a + 10))
+  //        c <- branch(leaf(b - 1), leaf(b + 1))
+  //      } yield c
+  //    }
+//}
+
 }

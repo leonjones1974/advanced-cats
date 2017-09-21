@@ -1,36 +1,39 @@
-//import cats.{Functor, Monad}
-//import cats.instances.list._
-//import uk.camsw.cats.{IdMonad, Writer}
-//import cats.syntax.either._
-//val list1 = List(1, 2, 3)
-//// list1: List[Int] = List(1, 2, 3)
-//
-//val list2 = Functor[List].map(list1)(_ * 2)
-//// list2: List[Int] = List(2, 4, 6)
-//
-//
-//val xs = Map("a" -> 1)
-//
-//Option(10).flatMap(_ => Option(4))
-//
-//IdMonad.pure(10)
-//IdMonad.map(IdMonad.pure(10))(_ + 12)
-//IdMonad.flatMap(IdMonad.pure(10))(_ => IdMonad.pure(30))
-//Either.catchOnly[NumberFormatException]("foo".toInt)
-//
-//import uk.camsw.cats.Eval._
-//Writer.factorial(10)
+import cats.data.State
+import uk.camsw.cats.States
 
-type Logged[A] = cats.data.Writer[Vector[String], A]
+States.operand(10).run(List.empty).value
 
-import cats.syntax.applicative._
-import cats.instances.vector._
-import cats.syntax.writer._
 
-//val ans = 1.pure[Logged]
-//val ans:Logged[Int] = 1.writer(Vector.empty[String])
-//ans.flatMap(x => x.map(_ => Vector("and a message").tell)).run
-1.pure[Logged].flatMap(ans => Vector("and a message").tell)
+val a = State[Int, String] {
+  state => (state, s"the state is $state")
+}
 
-List("ana", "aan", "naa", "abc", "cab", "fish").groupBy(_.sortBy(_.toInt))
+a.run(10).value
+a.runS(10).value
+a.runA(10).value
 
+val getDemo = State.get[Int]
+getDemo.run(10).value
+
+val setDemo = State.set[Int](30)
+setDemo.run(10).value
+
+val pureDemo = State.pure[Int, String]("Result")
+pureDemo.run(10).value
+
+val inspectDemo = State.inspect[Int, String](_ + "!")
+inspectDemo.run(20).value
+
+val modifyDemo = State.modify[Int](_ * 2)
+modifyDemo.run(20).value
+
+import State._
+val program: State[Int, (Int, Int, Int)] = for {
+  a <- get[Int]
+  _ <- set[Int](a + 1)
+  b <- get[Int]
+  _ <- modify[Int](_ + 1)
+  c <- inspect[Int, Int](_ * 1000)
+} yield (a, b, c)
+
+program.run(10).value
