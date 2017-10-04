@@ -28,6 +28,7 @@ val modifyDemo = State.modify[Int](_ * 2)
 modifyDemo.run(20).value
 
 import State._
+
 val program: State[Int, (Int, Int, Int)] = for {
   a <- get[Int]
   _ <- set[Int](a + 1)
@@ -37,3 +38,10 @@ val program: State[Int, (Int, Int, Int)] = for {
 } yield (a, b, c)
 
 program.run(10).value
+
+def fib(n: Int): Int = n match {
+  case 0 | 1 => 1
+  case x => fib(n - 1) + fib(n - 2)
+}
+
+fib(7)

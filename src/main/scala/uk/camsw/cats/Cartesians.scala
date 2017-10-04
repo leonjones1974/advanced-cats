@@ -17,6 +17,9 @@ object Cartesians {
     } yield (a, b)
   }
 
-  case class USer(name: String, age: Int)
+  case class User(name: String, age: Int)
+
+  val data = Map("Leon" -> 43)
+
 
 }
