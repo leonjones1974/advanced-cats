@@ -9,12 +9,10 @@ object Writer {
   def slowly[A](body: => A) = try body finally Thread.sleep(100)
 
   def factorial(n: Int): Int = slowly {
-    val x = n match {
+    n match {
       case 0 => 1
       case y => y * factorial(y - 1)
     }
-    println(s"fact $n $x")
-    x
   }
 
   type Logged[A] = cats.data.Writer[Vector[String], A]
